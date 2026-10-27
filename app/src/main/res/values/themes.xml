@@ -1,9 +1,38 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.WorldCupQuiz" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App theme: light only (all custom colors are designed for a light look) -->
+    <style name="Theme.WorldCupQuiz" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Main brand color: buttons, active elements -->
+        <item name="colorPrimary">@color/pitch_green</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/mint</item>
+        <item name="colorOnPrimaryContainer">@color/pitch_green_dark</item>
+
+        <!-- Secondary accent -->
+        <item name="colorSecondary">@color/gold</item>
+        <item name="colorOnSecondary">@color/navy</item>
+
+        <!-- Backgrounds and text on them -->
+        <item name="android:colorBackground">@color/chalk</item>
+        <item name="android:windowBackground">@color/chalk</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/navy</item>
+        <item name="colorOnBackground">@color/navy</item>
     </style>
 
-    <style name="Theme.WorldCupQuiz" parent="Base.Theme.WorldCupQuiz" />
+    <!-- Reusable style for the topic tabs on the Category screen -->
+    <style name="CategoryTab">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
 </resources>

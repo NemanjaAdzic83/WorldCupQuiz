@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Main palette (football pitch theme) -->
+    <color name="pitch_green">#1B7A4D</color>
+    <color name="pitch_green_dark">#145C3B</color>
+    <color name="mint">#E9F3EC</color>
+    <color name="chalk">#F6F8F4</color>
+    <color name="gold">#E3A712</color>
+    <color name="gold_dark">#B9860B</color>
+    <color name="gold_light">#FDF3DA</color>
+    <color name="navy">#16263A</color>
+    <color name="navy_dark">#0F1C2B</color>
+    <color name="navy_soft">#3C5064</color>
+    <color name="red_wrong">#C1503F</color>
+    <color name="red_light">#FBEAE7</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Thin borders: navy at ~12% opacity -->
+    <color name="line">#1F16263A</color>
 </resources>
