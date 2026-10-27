@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WorldCupQuiz</string>
+
+    <!-- World Cup eras (Home screen) -->
+    <string name="era_early">Early Era</string>
+    <string name="era_rise">Rise of the Giants</string>
+    <string name="era_golden">Golden Era</string>
+    <string name="era_modern">Modern Era</string>
+    <string name="era_new_age">New Age</string>
 </resources>
