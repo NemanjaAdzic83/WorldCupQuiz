@@ -1,7 +1,6 @@
 package com.nemanja.worldcupquiz;
 
 import android.os.Bundle;
-import android.util.Log;
 
 
 import androidx.activity.EdgeToEdge;
@@ -10,26 +9,30 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.nemanja.worldcupquiz.data.model.CategoryType;
-import com.nemanja.worldcupquiz.data.repository.QuizRepository;
+import com.nemanja.worldcupquiz.databinding.ActivityMainBinding;
 
 
+/**
+ * The only Activity. Hosts the NavHostFragment - every screen is a Fragment
+ * defined in res/navigation/nav_graph.xml.
+ */
 public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // Keep content out from under the status bar and navigation bar.
+        ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
     }
-
-
-
 }

@@ -7,4 +7,26 @@
     <string name="era_golden">Golden Era</string>
     <string name="era_modern">Modern Era</string>
     <string name="era_new_age">New Age</string>
+
+    <!-- Home screen -->
+    <string name="home_eyebrow">★ 1930–2026</string>
+    <string name="home_title">WORLD CUP\nQUIZ</string>
+    <string name="home_subtitle">Test your knowledge of every World Cup – legends, records and stadiums.</string>
+    <string name="stat_tournaments">Tournaments</string>
+    <string name="stat_eras">Eras</string>
+    <string name="stat_questions">Questions</string>
+    <string name="home_label_eras">World Cup eras</string>
+    <string name="home_label_special">Special sections</string>
+    <string name="home_records_title">Records &amp; Legends</string>
+    <string name="home_records_sub">A quiz across all eras</string>
+    <string name="home_stadiums_title">Stadiums</string>
+    <string name="home_stadiums_sub">Facts about World Cup venues</string>
+    <string name="badge_quiz">QUIZ</string>
+    <string name="badge_info">INFO</string>
+
+    <!-- Symbols used as simple icons -->
+    <string name="symbol_arrow">→</string>
+    <string name="symbol_star">★</string>
+    <string name="symbol_shield">⛨</string>
+
 </resources>

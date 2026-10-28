@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/chalk"
+    android:fillViewport="true"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- ============ HERO (green header) ============ -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/hero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_hero_gradient"
+            android:paddingStart="26dp"
+            android:paddingTop="38dp"
+            android:paddingEnd="26dp"
+            android:paddingBottom="30dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_eyebrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="@string/home_eyebrow"
+                android:textColor="@color/gold"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_hero_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/home_title"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_eyebrow" />
+
+            <TextView
+                android:id="@+id/text_hero_sub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/home_subtitle"
+                android:textColor="@color/white_75"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_hero_title"
+                app:layout_constraintWidth_max="280dp" />
+
+            <!-- Three stat boxes side by side, equal width -->
+            <LinearLayout
+                android:id="@+id/stats_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/text_hero_sub">
+
+                <include
+                    android:id="@+id/stat_tournaments"
+                    layout="@layout/item_hero_stat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/stat_eras"
+                    layout="@layout/item_hero_stat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/stat_questions"
+                    layout="@layout/item_hero_stat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Green stripe under the header -->
+        <View
+            android:id="@+id/pitch_divider"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:background="@color/pitch_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hero" />
+
+        <!-- ============ BODY ============ -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="22dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="30dp"
+            app:layout_constraintTop_toBottomOf="@id/pitch_divider">
+
+            <!-- "Continue quiz" card: visible only when an unfinished quiz exists -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card_continue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="26dp"
+                android:background="@drawable/bg_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="16dp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/text_continue_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/navy"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/arrow_continue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1986 – Mexico" />
+
+                <TextView
+                    android:id="@+id/text_continue_sub"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/navy_soft"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@id/arrow_continue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_continue_title"
+                    tools:text="Question 2/5" />
+
+                <TextView
+                    android:id="@+id/arrow_continue"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/bg_circle_mint"
+                    android:gravity="center"
+                    android:text="@string/symbol_arrow"
+                    android:textColor="@color/pitch_green_dark"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/label_eras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.1"
+                android:text="@string/home_label_eras"
+                android:textAllCaps="true"
+                android:textColor="@color/navy_soft"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/card_continue" />
+
+            <!-- Grid of era cards (filled from code in step 10b) -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_eras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/label_eras"
+                tools:itemCount="5"
+                tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:listitem="@layout/item_era_card"
+                tools:spanCount="2" />
+
+            <TextView
+                android:id="@+id/label_special"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.1"
+                android:text="@string/home_label_special"
+                android:textAllCaps="true"
+                android:textColor="@color/navy_soft"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recycler_eras" />
+
+            <!-- Records & Legends card -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card_records"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="14dp"
+                app:layout_constraintTop_toBottomOf="@id/label_special">
+
+                <TextView
+                    android:id="@+id/icon_records"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_circle_mint"
+                    android:gravity="center"
+                    android:text="@string/symbol_star"
+                    android:textColor="@color/pitch_green_dark"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_records_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:text="@string/home_records_title"
+                    android:textColor="@color/navy"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/badge_records"
+                    app:layout_constraintStart_toEndOf="@id/icon_records"
+                    app:layout_constraintTop_toTopOf="@id/icon_records" />
+
+                <TextView
+                    android:id="@+id/text_records_sub"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/home_records_sub"
+                    android:textColor="@color/navy_soft"
+                    android:textSize="11.5sp"
+                    app:layout_constraintEnd_toStartOf="@id/badge_records"
+                    app:layout_constraintStart_toEndOf="@id/icon_records"
+                    app:layout_constraintTop_toBottomOf="@id/text_records_title" />
+
+                <TextView
+                    android:id="@+id/badge_records"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_badge_quiz"
+                    android:fontFamily="monospace"
+                    android:paddingStart="7dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="7dp"
+                    android:paddingBottom="4dp"
+                    android:text="@string/badge_quiz"
+                    android:textColor="@color/pitch_green_dark"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Stadiums card -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card_stadiums"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="14dp"
+                app:layout_constraintTop_toBottomOf="@id/card_records">
+
+                <TextView
+                    android:id="@+id/icon_stadiums"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_badge_info"
+                    android:gravity="center"
+                    android:text="@string/symbol_shield"
+                    android:textColor="@color/gold_dark"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_stadiums_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:text="@string/home_stadiums_title"
+                    android:textColor="@color/navy"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/badge_stadiums"
+                    app:layout_constraintStart_toEndOf="@id/icon_stadiums"
+                    app:layout_constraintTop_toTopOf="@id/icon_stadiums" />
+
+                <TextView
+                    android:id="@+id/text_stadiums_sub"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/home_stadiums_sub"
+                    android:textColor="@color/navy_soft"
+                    android:textSize="11.5sp"
+                    app:layout_constraintEnd_toStartOf="@id/badge_stadiums"
+                    app:layout_constraintStart_toEndOf="@id/icon_stadiums"
+                    app:layout_constraintTop_toBottomOf="@id/text_stadiums_title" />
+
+                <TextView
+                    android:id="@+id/badge_stadiums"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_badge_info"
+                    android:fontFamily="monospace"
+                    android:paddingStart="7dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="7dp"
+                    android:paddingBottom="4dp"
+                    android:text="@string/badge_info"
+                    android:textColor="@color/gold_dark"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

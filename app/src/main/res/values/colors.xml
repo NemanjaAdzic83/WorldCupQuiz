@@ -18,4 +18,9 @@
 
     <!-- Thin borders: navy at ~12% opacity -->
     <color name="line">#1F16263A</color>
+
+    <!-- White with transparency (text and boxes on the green header) -->
+    <color name="white_75">#BFFFFFFF</color>
+    <color name="white_65">#A6FFFFFF</color>
+    <color name="white_10">#1AFFFFFF</color>
 </resources>
