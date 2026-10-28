@@ -19,6 +19,7 @@ import com.nemanja.worldcupquiz.ui.model.EraUiModel;
 import android.widget.Toast;
 
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 
@@ -97,8 +98,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void onEraClicked(EraUiModel eraModel) {
-        // TODO step 11: navigate to the Category screen of this era
-        showComingSoon();
+        navigateToCategory(eraModel.getEra());
+    }
+
+    private void navigateToCategory(Era era) {
+        NavHostFragment.findNavController(this)
+                .navigate(HomeFragmentDirections.actionHomeToCategory(era));
     }
 
     // ---------- "Continue quiz" card ----------
@@ -115,15 +120,17 @@ public class HomeFragment extends Fragment {
 
             if (progress.getTournamentId() == null) {
                 binding.textContinueTitle.setText(R.string.home_records_title);
+                // TODO step 11b: open the Records & Legends quiz
+                binding.cardContinue.setOnClickListener(v -> showComingSoon());
             }
-            // TODO step 11: open the unfinished quiz
-            binding.cardContinue.setOnClickListener(v -> showComingSoon());
         });
 
         viewModel.getContinueTournament().observe(getViewLifecycleOwner(), tournament -> {
             if (tournament != null) {
                 binding.textContinueTitle.setText(getString(R.string.continue_title_tournament,
                         tournament.getYear(), tournament.getHostCountry()));
+                binding.cardContinue.setOnClickListener(v ->
+                        navigateToCategory(Era.fromYear(tournament.getYear())));
             }
         });
     }
