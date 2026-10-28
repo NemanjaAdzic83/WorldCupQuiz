@@ -29,4 +29,14 @@
     <string name="symbol_star">★</string>
     <string name="symbol_shield">⛨</string>
 
+    <!-- Home screen - dynamic texts -->
+    <string name="era_years">%1$d–%2$d</string>
+    <plurals name="era_tournament_count">
+        <item quantity="one">%d tournament</item>
+        <item quantity="other">%d tournaments</item>
+    </plurals>
+    <string name="continue_title_tournament">%1$d – %2$s</string>
+    <string name="continue_progress">Question %1$d/%2$d</string>
+    <string name="coming_soon">Coming soon</string>
+
 </resources>

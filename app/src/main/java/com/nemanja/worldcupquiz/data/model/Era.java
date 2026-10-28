@@ -38,7 +38,7 @@ public enum Era {
     }
 
     // String resource id of the era name, e.g. R.string.era_golden
-    public int getDisplayNames() {
+    public int getDisplayNameRes() {
         return displayNames;
     }
 
