@@ -23,7 +23,6 @@ import com.nemanja.worldcupquiz.util.AppExecutors;
 
 /**
  * The app's Room database. Singleton - one instance for the whole app.
- * Room generates the implementation (AppDatabase_Impl) at build time.
  */
 @Database(
         entities = {
@@ -42,7 +41,6 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase instance;
 
-    // Room implements these and returns ready-to-use DAOs.
     public abstract TournamentDao tournamentDao();
     public abstract QuizCategoryDao quizCategoryDao();
     public abstract QuestionDao questionDao();
@@ -53,11 +51,9 @@ public abstract class AppDatabase extends RoomDatabase {
         if (instance == null) {
             synchronized (AppDatabase.class) {
                 if (instance == null) {
-                    instance = Room.databaseBuilder(
-                                    context.getApplicationContext(),
-                                    AppDatabase.class,
-                                    DB_NAME)
-                            .addCallback(SEED_CALLBACK)
+                    Context appContext = context.getApplicationContext();
+                    instance = Room.databaseBuilder(appContext, AppDatabase.class, DB_NAME)
+                            .addCallback(createSeedCallback(appContext))
                             .build();
                 }
             }
@@ -66,18 +62,21 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     /**
-     * Called by Room only ONCE - when the database file is created (fresh install).
-     * Seeding writes to the database, so it must run on a background thread.
+     * Seeds the database on a background thread every time it is opened.
+     * DatabaseSeeder itself skips the work if data is already there, so this is cheap.
+     * Using onOpen (not onCreate) means a failed first seed is retried on the next launch.
      */
-    private static final RoomDatabase.Callback SEED_CALLBACK = new RoomDatabase.Callback() {
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-            AppExecutors.getInstance().diskIO().execute(() -> {
-                if (instance != null) {
-                    DatabaseSeeder.seed(instance);
-                }
-            });
-        }
-    };
+    private static RoomDatabase.Callback createSeedCallback(Context appContext) {
+        return new RoomDatabase.Callback() {
+            @Override
+            public void onOpen(@NonNull SupportSQLiteDatabase db) {
+                super.onOpen(db);
+                AppExecutors.getInstance().diskIO().execute(() -> {
+                    if (instance != null) {
+                        DatabaseSeeder.seed(instance, appContext);
+                    }
+                });
+            }
+        };
+    }
 }

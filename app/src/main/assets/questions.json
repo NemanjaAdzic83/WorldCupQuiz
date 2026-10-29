@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "questions": [
+    {
+      "tournamentYear": 1930,
+      "category": "GENERAL",
+      "difficulty": 1,
+      "text": "Which team won the first World Cup in 1930?",
+      "options": ["Brazil", "Uruguay", "Argentina", "Italy"],
+      "correct": 1,
+      "explanation": "Hosts Uruguay beat Argentina 4-2 in the final."
+    },
+    {
+      "tournamentYear": 1966,
+      "category": "FINALS",
+      "difficulty": 1,
+      "text": "Which country won the 1966 World Cup at home?",
+      "options": ["West Germany", "England", "Brazil", "Portugal"],
+      "correct": 1,
+      "explanation": "England beat West Germany 4-2 after extra time at Wembley."
+    },
+
+    {
+      "tournamentYear": 1986,
+      "category": "PLAYERS",
+      "difficulty": 2,
+      "text": "Who scored the famous \"Hand of God\" goal?",
+      "options": ["Diego Maradona", "Jorge Valdano", "Gary Lineker", "Careca"],
+      "correct": 0,
+      "explanation": "Maradona scored it with his hand against England in the quarter-final."
+    },
+    {
+      "tournamentYear": 1986,
+      "category": "RECORDS",
+      "difficulty": 3,
+      "text": "How many teams played at the 1986 World Cup in Mexico?",
+      "options": ["16", "20", "24", "32"],
+      "correct": 2,
+      "explanation": "1986 was the second World Cup with 24 teams."
+    },
+    {
+      "tournamentYear": 2014,
+      "category": "RECORDS",
+      "difficulty": 2,
+      "text": "What was the score when Germany beat Brazil in the 2014 semi-final?",
+      "options": ["5-0", "7-1", "4-0", "6-2"],
+      "correct": 1,
+      "explanation": "Known as the \"Mineirazo\", one of the biggest shocks in World Cup history."
+    },
+    {
+      "tournamentYear": 2022,
+      "category": "FINALS",
+      "difficulty": 3,
+      "text": "Who won the 2022 World Cup final on penalties?",
+      "options": ["France", "Argentina", "Croatia", "Morocco"],
+      "correct": 1,
+      "explanation": "Argentina won 4-2 on penalties after a 3-3 draw."
+    },
+    {
+      "tournamentYear": 2026,
+      "category": "FINALS",
+      "difficulty": 2,
+      "text": "Who won the 2026 World Cup final?",
+      "options": ["Argentina", "France", "Spain", "Brazil"],
+      "correct": 2,
+      "explanation": "Spain beat Argentina 1-0 after extra time at MetLife Stadium."
+    },
+    {
+      "tournamentYear": null,
+      "category": "RECORDS",
+      "difficulty": 2,
+      "text": "Who is the all-time top scorer in World Cup history?",
+      "options": ["Miroslav Klose", "Ronaldo Nazario", "Pele", "Lionel Messi"],
+      "correct": 0,
+      "explanation": "Miroslav Klose scored 16 goals across four World Cups (2002-2014)."
+    },
+    {
+      "tournamentYear": null,
+      "category": "HOSTS",
+      "difficulty": 1,
+      "text": "Which was the first World Cup hosted by three countries?",
+      "options": ["2002 (Japan & South Korea)", "2026 (USA, Canada & Mexico)", "2018 (Russia)", "1994 (USA)"],
+      "correct": 1,
+      "explanation": "2002 had two hosts; 2026 was the first with three."
+    }
+  ]
+}
