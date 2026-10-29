@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/bg_card"
+    android:orientation="vertical">
+
+    <!-- Photo placeholder: real stadium photos are usually copyrighted and must be
+         obtained legally (e.g. Wikimedia Commons under a CC license) -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@drawable/bg_stadium_photo_placeholder">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:text="@string/symbol_stadium"
+            android:textSize="26sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="8dp"
+            android:background="@color/navy_70"
+            android:fontFamily="monospace"
+            android:paddingStart="8dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="3dp"
+            android:text="@string/stadium_photo_placeholder"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="9sp" />
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/text_stadium_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/navy"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Lusail Stadium" />
+
+        <TextView
+            android:id="@+id/text_stadium_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/navy_soft"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_stadium_name"
+            tools:text="Lusail, Qatar" />
+
+        <!-- Small fact chips -->
+        <LinearLayout
+            android:id="@+id/facts_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_stadium_city">
+
+            <TextView
+                android:id="@+id/fact_capacity"
+                style="@style/FactChip"
+                android:layout_marginEnd="8dp"
+                tools:text="Capacity: 88,966" />
+
+            <TextView
+                android:id="@+id/fact_opened"
+                style="@style/FactChip"
+                android:layout_marginEnd="8dp"
+                tools:text="Opened 2021" />
+
+            <TextView
+                android:id="@+id/fact_highlight"
+                style="@style/FactChip"
+                tools:text="World Cup Final" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/note_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/facts_row" />
+
+        <TextView
+            android:id="@+id/text_fun_fact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:lineSpacingExtra="2dp"
+            android:textColor="@color/navy"
+            android:textSize="12.5sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/note_divider"
+            tools:text="The largest stadium of the tournament." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

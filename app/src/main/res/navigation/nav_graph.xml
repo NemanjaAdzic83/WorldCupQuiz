@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_home_to_quiz"
             app:destination="@id/quizFragment"/>
+        <action
+            android:id="@+id/action_home_to_stadiums"
+            app:destination="@id/stadiumsFragment"/>
     </fragment>
 
     <!-- ============ CATEGORY (tournaments of one era) ============ -->
@@ -77,6 +80,33 @@
             android:name="quizTitle"
             app:argType="string"/>
 
+    </fragment>
+
+    <!-- ============ STADIUMS (choose a World Cup) ============ -->
+    <fragment
+        android:id="@+id/stadiumsFragment"
+        android:name="com.nemanja.worldcupquiz.ui.stadiums.StadiumsFragment"
+        android:label="Stadiums"
+        tools:layout="@layout/fragment_stadiums">
+
+        <action
+            android:id="@+id/action_stadiums_to_detail"
+            app:destination="@id/stadiumDetailFragment" />
+    </fragment>
+
+    <!-- ============ STADIUM DETAIL (stadiums of one World Cup) ============ -->
+    <fragment
+        android:id="@+id/stadiumDetailFragment"
+        android:name="com.nemanja.worldcupquiz.ui.stadiums.StadiumDetailFragment"
+        android:label="StadiumDetail"
+        tools:layout="@layout/fragment_stadium_detail">
+
+        <argument
+            android:name="tournamentId"
+            app:argType="integer" />
+        <argument
+            android:name="tournamentTitle"
+            app:argType="string" />
     </fragment>
 
 

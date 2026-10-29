@@ -37,7 +37,6 @@
     </plurals>
     <string name="continue_title_tournament">%1$d – %2$s</string>
     <string name="continue_progress">Question %1$d/%2$d</string>
-    <string name="coming_soon">Coming soon</string>
 
     <!-- Category screen -->
     <string name="symbol_back">←</string>
@@ -70,5 +69,20 @@
     <string name="results_points">+%d</string>
     <string name="btn_next_quiz">Next quiz</string>
     <string name="btn_home">Back to home</string>
+
+    <!-- Stadiums -->
+    <string name="symbol_bulb">💡</string>
+    <string name="symbol_stadium">🏟️</string>
+    <string name="stadiums_title">Stadiums</string>
+    <string name="stadiums_choose">Choose a World Cup</string>
+    <string name="stadiums_fact_label">Fun fact</string>
+    <string name="stadiums_fact_title">Did you know?</string>
+    <string name="stadiums_fact_body">2026 was the first World Cup played in three countries at once.</string>
+    <string name="stadium_detail_title">Stadiums · %1$d – %2$s</string>
+    <string name="stadium_location">%1$s, %2$s</string>
+    <string name="stadium_capacity">Capacity: %s</string>
+    <string name="stadium_opened">Opened %d</string>
+    <string name="stadium_photo_placeholder">Photo coming soon</string>
+    <string name="stadium_empty">Stadium data for this World Cup is coming soon.</string>
 
 </resources>

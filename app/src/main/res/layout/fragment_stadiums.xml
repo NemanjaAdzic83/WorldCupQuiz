@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/chalk"
+    tools:context=".ui.stadiums.StadiumsFragment">
+
+    <!-- ============ Top bar ============ -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingStart="20dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/btn_back"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="@drawable/bg_circle_mint"
+            android:clickable="true"
+            android:contentDescription="@string/back"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/symbol_back"
+            android:textColor="@color/pitch_green_dark"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/stadiums_title"
+            android:textColor="@color/navy"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/btn_back"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/topbar_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topbar_divider">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/label_choose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.1"
+                android:text="@string/stadiums_choose"
+                android:textAllCaps="true"
+                android:textColor="@color/navy_soft"
+                android:textSize="11sp" />
+
+            <!-- Grid of World Cup "pills", 3 per row -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_pills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:itemCount="6"
+                tools:listitem="@layout/item_wc_pill" />
+
+            <TextView
+                android:id="@+id/label_fact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.1"
+                android:text="@string/stadiums_fact_label"
+                android:textAllCaps="true"
+                android:textColor="@color/navy_soft"
+                android:textSize="11sp" />
+
+            <!-- Fun fact card -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card_fact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_card"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/icon_fact"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_badge_info"
+                    android:gravity="center"
+                    android:importantForAccessibility="no"
+                    android:text="@string/symbol_bulb"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_fact_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:text="@string/stadiums_fact_title"
+                    android:textColor="@color/navy"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/icon_fact"
+                    app:layout_constraintTop_toTopOf="@id/icon_fact" />
+
+                <TextView
+                    android:id="@+id/text_fact_body"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/stadiums_fact_body"
+                    android:textColor="@color/navy_soft"
+                    android:textSize="11.5sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/icon_fact"
+                    app:layout_constraintTop_toBottomOf="@id/text_fact_title" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -156,12 +156,10 @@ public class HomeFragment extends Fragment {
         // Records & Legends = all cross-era questions (no tournament, no category filter)
         binding.cardRecords.setOnClickListener(v -> navigateToQuiz(
                 QuizViewModel.NO_ID, QuizViewModel.NO_ID, getString(R.string.home_records_title)));
-        // TODO step 12: open the Stadiums screen
-        binding.cardStadiums.setOnClickListener(v -> showComingSoon());
-    }
 
-    private void showComingSoon() {
-        Toast.makeText(requireContext(), R.string.coming_soon, Toast.LENGTH_SHORT).show();
+        binding.cardStadiums.setOnClickListener(v ->
+                NavHostFragment.findNavController(this)
+                        .navigate(HomeFragmentDirections.actionHomeToStadiums()));
     }
 
     @Override

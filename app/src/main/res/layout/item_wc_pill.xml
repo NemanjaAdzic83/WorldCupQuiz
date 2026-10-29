@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="@drawable/bg_wc_pill_inactive"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:paddingStart="14dp"
+    android:paddingTop="9dp"
+    android:paddingEnd="14dp"
+    android:paddingBottom="9dp">
+
+    <TextView
+        android:id="@+id/pill_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:textColor="@color/gold_dark"
+        android:textStyle="bold"
+        android:textSize="11sp"
+        tools:text="2022"/>
+
+    <TextView
+        android:id="@+id/pill_host"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/navy"
+        android:textSize="12.5sp"
+        android:textStyle="bold"
+        tools:text="Qatar" />
+
+</LinearLayout>

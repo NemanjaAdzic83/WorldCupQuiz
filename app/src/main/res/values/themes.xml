@@ -35,4 +35,18 @@
         <item name="android:focusable">true</item>
     </style>
 
+    <!-- Small grey "chip" with a fact (Stadium cards) -->
+    <style name="FactChip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_fact_chip</item>
+        <item name="android:paddingStart">9dp</item>
+        <item name="android:paddingEnd">9dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:textColor">@color/navy_soft</item>
+        <item name="android:textSize">10.5sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
