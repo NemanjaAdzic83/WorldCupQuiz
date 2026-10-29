@@ -84,10 +84,29 @@ final class DatabaseSeeder {
     private static Map<Integer, Integer> insertTournaments(AppDatabase db) {
         // Tournament(year, host, winner, runnerUp, mascot, notableFact, teamsCount)
         List<Tournament> tournaments = Arrays.asList(
+                // ----- Early era (1930-1950) -----
                 new Tournament(1930, "Uruguay", "Uruguay", "Argentina", null,
                         "The first World Cup ever, played entirely in Montevideo.", 13),
+                new Tournament(1934, "Italy", "Italy", "Czechoslovakia", null,
+                        "The first World Cup with qualifying; holders Uruguay refused to take part.", 16),
+                new Tournament(1938, "France", "Italy", "Hungary", null,
+                        "Italy became the first team to defend the World Cup title.", 15),
+                new Tournament(1950, "Brazil", "Uruguay", "Brazil", null,
+                        "No final - a last group stage. Uruguay's win at the Maracana is the \"Maracanazo\".", 13),
+
+                // ----- Rise of the Giants (1954-1970) -----
+                new Tournament(1954, "Switzerland", "West Germany", "Hungary", null,
+                        "West Germany beat the favourites Hungary - the \"Miracle of Bern\".", 16),
+                new Tournament(1958, "Sweden", "Brazil", "Sweden", null,
+                        "17-year-old Pele scored twice in the final; Just Fontaine scored a record 13 goals.", 16),
+                new Tournament(1962, "Chile", "Brazil", "Czechoslovakia", null,
+                        "Brazil defended the title, led by Garrincha after Pele was injured early on.", 16),
                 new Tournament(1966, "England", "England", "West Germany", "World Cup Willie",
                         "The first official World Cup mascot - a lion in an England shirt.", 16),
+                new Tournament(1970, "Mexico", "Brazil", "Italy", "Juanito",
+                        "Brazil won a third title and kept the Jules Rimet Trophy for good.", 16),
+
+                // ----- Golden Era (1974-1990) -----
                 new Tournament(1974, "West Germany", "West Germany", "Netherlands", "Tip and Tap",
                         "Cruyff's Netherlands showed the world \"Total Football\".", 16),
                 new Tournament(1978, "Argentina", "Argentina", "Netherlands", "Gauchito",
@@ -98,10 +117,20 @@ final class DatabaseSeeder {
                         "Maradona's \"Hand of God\" and the \"Goal of the Century\" against England.", 24),
                 new Tournament(1990, "Italy", "West Germany", "Argentina", "Ciao",
                         "Known for defensive football and the anthem \"Un'estate italiana\".", 24),
+
+                // ----- Modern Era (1994-2010) -----
                 new Tournament(1994, "USA", "Brazil", "Italy", "Striker",
                         "The first World Cup final decided by a penalty shootout.", 24),
+                new Tournament(1998, "France", "France", "Brazil", "Footix",
+                        "The first World Cup with 32 teams; Zidane scored twice in the final.", 32),
+                new Tournament(2002, "South Korea & Japan", "Brazil", "Germany", "Ato, Kaz and Nik",
+                        "The first World Cup in Asia and the first with two hosts; Ronaldo scored 8 goals.", 32),
+                new Tournament(2006, "Germany", "Italy", "France", "Goleo VI",
+                        "Italy won on penalties in a final remembered for Zidane's red card.", 32),
                 new Tournament(2010, "South Africa", "Spain", "Netherlands", "Zakumi",
                         "The first World Cup in Africa, famous for the vuvuzelas.", 32),
+
+                // ----- New Age (2014-2026) -----
                 new Tournament(2014, "Brazil", "Germany", "Argentina", "Fuleco",
                         "Germany stunned the hosts 7-1 in the semi-final.", 32),
                 new Tournament(2018, "Russia", "France", "Croatia", "Zabivaka",
