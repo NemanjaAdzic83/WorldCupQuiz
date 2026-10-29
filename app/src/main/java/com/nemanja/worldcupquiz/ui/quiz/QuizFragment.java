@@ -6,7 +6,6 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +34,7 @@ public class QuizFragment extends Fragment {
     @Nullable
     private List<Question> questionList;
     private boolean answerLocked = false;
+    private String quizTitle = "";
 
     private final Handler handler = new Handler(Looper.getMainLooper());
 
@@ -61,6 +61,7 @@ public class QuizFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(QuizViewModel.class);
 
         QuizFragmentArgs args = QuizFragmentArgs.fromBundle(requireArguments());
+        quizTitle = args.getQuizTitle();
         viewModel.start(args.getTournamentId(), args.getCategoryId());
 
         binding.btnBack.setOnClickListener(v ->
@@ -195,11 +196,9 @@ public class QuizFragment extends Fragment {
 
     private void finishQuiz() {
         stopTimer();
-        // TODO step 11c: navigate to the Results screen instead
-        Toast.makeText(requireContext(),
-                getString(R.string.quiz_finished_temp, viewModel.getCorrectCount(), questionList.size()),
-                Toast.LENGTH_LONG).show();
-        NavHostFragment.findNavController(this).navigateUp();
+        int total = questionList != null ? questionList.size() : 0;
+        NavHostFragment.findNavController(this).navigate(
+                QuizFragmentDirections.actionQuizToResults(viewModel.getCorrectCount(),total, viewModel.getElapsedSeconds(), quizTitle));
     }
 
     @Override

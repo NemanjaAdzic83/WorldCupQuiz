@@ -51,6 +51,32 @@
         <argument
             android:name="quizTitle"
             app:argType="string"/>
+        <action
+            android:id="@+id/action_quiz_to_results"
+            app:destination="@+id/resultsFragment"
+            app:popUpTo="@id/quizFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.nemanja.worldcupquiz.ui.results.ResultsFragment"
+        android:label="Results"
+        tools:layout="@layout/fragment_results">
+
+        <argument
+            android:name="correctAnswers"
+            app:argType="integer"/>
+        <argument
+            android:name="totalQuestions"
+            app:argType="integer"/>
+        <argument
+            android:name="timeSeconds"
+            app:argType="integer"/>
+        <argument
+            android:name="quizTitle"
+            app:argType="string"/>
+
     </fragment>
 
 
