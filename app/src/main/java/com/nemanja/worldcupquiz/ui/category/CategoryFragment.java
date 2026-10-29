@@ -19,6 +19,7 @@ import com.nemanja.worldcupquiz.data.local.entity.Tournament;
 import com.nemanja.worldcupquiz.data.model.CategoryType;
 import com.nemanja.worldcupquiz.data.model.Era;
 import com.nemanja.worldcupquiz.databinding.FragmentCategoryBinding;
+import com.nemanja.worldcupquiz.ui.quiz.QuizViewModel;
 
 /**
  * Tournaments of one era + topic tabs (All / Finals / Players / Records).
@@ -70,8 +71,28 @@ public class CategoryFragment extends Fragment {
     }
 
     private void onTopicClicked(Tournament tournament) {
-        // TODO step 11b: open the quiz for this tournament (+ selected tab)
-        Toast.makeText(requireContext(), R.string.coming_soon, Toast.LENGTH_SHORT).show();
+        String quizTitle = getString(R.string.continue_title_tournament,
+                tournament.getYear(), tournament.getHostCountry());
+        CategoryType type = viewModel.getSelectedType();
+
+        if (type == null) {   // "All" tab - no category filter
+            navigateToQuiz(tournament.getId(), QuizViewModel.NO_ID, quizTitle);
+            return;
+        }
+
+        viewModel.findCategoryId(type, categoryId -> {
+            if (binding == null) return;   // user left the screen meanwhile
+            if (categoryId == null) {
+                Toast.makeText(requireContext(), R.string.category_not_found, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            navigateToQuiz(tournament.getId(), categoryId, quizTitle);
+        });
+    }
+
+    private void navigateToQuiz(int tournamentId, int categoryId, String title) {
+        NavHostFragment.findNavController(this).navigate(
+                CategoryFragmentDirections.actionCategoryToQuiz(tournamentId, categoryId, title));
     }
 
     // ---------- Tabs ----------

@@ -49,4 +49,12 @@
     <string name="topic_mascot">Mascot: %s</string>
     <string name="back">Back</string>
 
+    <!-- Quiz screen -->
+    <string name="quiz_progress">%1$d/%2$d</string>
+    <string name="quiz_question_number">QUESTION %d</string>
+    <string name="quiz_timer">%1$02d:%2$02d</string>
+    <string name="quiz_empty">There are no questions here yet.\nTry another tab or tournament.</string>
+    <string name="quiz_finished_temp">You scored %1$d of %2$d</string>
+    <string name="category_not_found">Category not found</string>
+
 </resources>

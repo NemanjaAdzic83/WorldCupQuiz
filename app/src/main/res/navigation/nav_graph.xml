@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_home_to_category"
             app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_home_to_quiz"
+            app:destination="@id/quizFragment"/>
     </fragment>
 
     <!-- ============ CATEGORY (tournaments of one era) ============ -->
@@ -27,6 +30,28 @@
         <argument
             android:name="era"
             app:argType="com.nemanja.worldcupquiz.data.model.Era" />
+        <action
+            android:id="@+id/action_category_to_quiz"
+            app:destination="@id/quizFragment"/>
     </fragment>
+
+    <!-- =============== QUIZ ================= -->
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.nemanja.worldcupquiz.ui.quiz.QuizFragment"
+        android:label="Quiz"
+        tools:layout="@layout/fragment_quiz">
+
+        <argument
+            android:name="tournamentId"
+            app:argType="integer"/>
+        <argument
+            android:name="categoryId"
+            app:argType="integer"/>
+        <argument
+            android:name="quizTitle"
+            app:argType="string"/>
+    </fragment>
+
 
 </navigation>

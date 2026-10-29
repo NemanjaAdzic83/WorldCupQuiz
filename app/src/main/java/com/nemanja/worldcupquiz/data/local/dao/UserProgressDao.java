@@ -24,4 +24,13 @@ public interface UserProgressDao {
     /** The most recently played unfinished quiz - for the "Continue quiz" card. */
     @Query("SELECT * FROM user_progress WHERE completed = 0 ORDER BY lastPlayedAt DESC LIMIT 1")
     LiveData<UserProgress> getLastUnfinished();
+
+    /**
+     * The unfinished progress of ONE specific quiz (same tournament + category).
+     * "IS" instead of "=" so that NULL matches NULL. Background thread only.
+     */
+    @Query("SELECT * FROM user_progress WHERE completed = 0 " +
+            "AND tournamentId IS :tournamentId AND categoryId IS :categoryId " +
+            "ORDER BY lastPlayedAt DESC LIMIT 1")
+    UserProgress findUnfinishedSync(Integer tournamentId, Integer categoryId);
 }

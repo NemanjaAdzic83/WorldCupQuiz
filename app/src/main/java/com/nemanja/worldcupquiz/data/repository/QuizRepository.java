@@ -28,6 +28,11 @@ public class QuizRepository {
         void onResult(@Nullable Integer categoryId);
     }
 
+    /** Callback for a progres lookup. Delivered on the main thread */
+    public interface ProgressCallback{
+        void onResult(@Nullable UserProgress progress);
+    }
+
     private static volatile QuizRepository instance;
 
     private final AppDatabase db;
@@ -85,6 +90,10 @@ public class QuizRepository {
         return db.questionDao().getCount();
     }
 
+    public LiveData<List<Question>> getAllCrossEraQuestions(){
+        return db.questionDao().getAllCrossEraQuestions();
+    }
+
     // ---------- Categories ----------
 
     /**
@@ -121,4 +130,17 @@ public class QuizRepository {
             }
         });
     }
+
+    /**
+     * Looks for an unfinished run of this exact quiz (to resume it).
+     * Result (or null) is delivered on the main thread.
+     */
+    public void findUnfinishedProgress(@Nullable Integer tournamentId, @Nullable Integer categoryId,
+                                       ProgressCallback callback){
+        executors.diskIO().execute(() -> {
+            UserProgress progress = db.userProgressDao().findUnfinishedSync(tournamentId,categoryId);
+            executors.mainThread().execute(() -> callback.onResult(progress));
+        });
+    }
+
 }

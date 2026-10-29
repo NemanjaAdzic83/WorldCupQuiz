@@ -12,9 +12,11 @@ import androidx.fragment.app.Fragment;
 
 import com.nemanja.worldcupquiz.R;
 import com.nemanja.worldcupquiz.data.local.entity.Tournament;
+import com.nemanja.worldcupquiz.data.local.entity.UserProgress;
 import com.nemanja.worldcupquiz.data.model.Era;
 import com.nemanja.worldcupquiz.databinding.FragmentHomeBinding;
 import com.nemanja.worldcupquiz.ui.model.EraUiModel;
+import com.nemanja.worldcupquiz.ui.quiz.QuizViewModel;
 
 import android.widget.Toast;
 
@@ -106,6 +108,11 @@ public class HomeFragment extends Fragment {
                 .navigate(HomeFragmentDirections.actionHomeToCategory(era));
     }
 
+    private void navigateToQuiz(int tournamentId, int categoryId, String title){
+        NavHostFragment.findNavController(this).navigate(
+                HomeFragmentDirections.actionHomeToQuiz(tournamentId,categoryId,title));
+    }
+
     // ---------- "Continue quiz" card ----------
 
     private void observeContinueCard() {
@@ -119,27 +126,36 @@ public class HomeFragment extends Fragment {
                     progress.getQuestionsAnswered(), progress.getTotalQuestions()));
 
             if (progress.getTournamentId() == null) {
-                binding.textContinueTitle.setText(R.string.home_records_title);
-                // TODO step 11b: open the Records & Legends quiz
-                binding.cardContinue.setOnClickListener(v -> showComingSoon());
+                String title = getString(R.string.home_records_title);
+                binding.textContinueTitle.setText(title);
+                binding.cardContinue.setOnClickListener(v -> resumeQuiz(progress, title));
             }
         });
 
         viewModel.getContinueTournament().observe(getViewLifecycleOwner(), tournament -> {
-            if (tournament != null) {
-                binding.textContinueTitle.setText(getString(R.string.continue_title_tournament,
-                        tournament.getYear(), tournament.getHostCountry()));
-                binding.cardContinue.setOnClickListener(v ->
-                        navigateToCategory(Era.fromYear(tournament.getYear())));
+            UserProgress progress = viewModel.getLastUnfinishedProgress().getValue();
+            if (tournament != null && progress != null) {
+                String title = getString(R.string.continue_title_tournament,
+                        tournament.getYear(), tournament.getHostCountry());
+                binding.textContinueTitle.setText(title);
+                binding.cardContinue.setOnClickListener(v -> resumeQuiz(progress, title));
             }
         });
+    }
+
+    /** Opens the same quiz again - QuizViewModel finds the unfinished run and resumes it. */
+    private void resumeQuiz(UserProgress progress, String title) {
+        int tournamentId = progress.getTournamentId() != null ? progress.getTournamentId() : QuizViewModel.NO_ID;
+        int categoryId = progress.getCategoryId() != null ? progress.getCategoryId() : QuizViewModel.NO_ID;
+        navigateToQuiz(tournamentId, categoryId, title);
     }
 
     // ---------- Special sections ----------
 
     private void setupSpecialCards() {
-        // TODO step 11: open the Records & Legends quiz
-        binding.cardRecords.setOnClickListener(v -> showComingSoon());
+        // Records & Legends = all cross-era questions (no tournament, no category filter)
+        binding.cardRecords.setOnClickListener(v -> navigateToQuiz(
+                QuizViewModel.NO_ID, QuizViewModel.NO_ID, getString(R.string.home_records_title)));
         // TODO step 12: open the Stadiums screen
         binding.cardStadiums.setOnClickListener(v -> showComingSoon());
     }

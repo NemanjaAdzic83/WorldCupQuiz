@@ -1,5 +1,4 @@
 package com.nemanja.worldcupquiz.ui.category;
-
 import android.app.Application;
 
 import androidx.annotation.NonNull;
@@ -21,6 +20,7 @@ import java.util.List;
  */
 public class CategoryViewModel extends AndroidViewModel {
 
+    private final QuizRepository repository;
     private final MutableLiveData<Era> selectedEra = new MutableLiveData<>();
     private final LiveData<List<Tournament>> tournaments;
 
@@ -30,17 +30,14 @@ public class CategoryViewModel extends AndroidViewModel {
 
     public CategoryViewModel(@NonNull Application application) {
         super(application);
-        QuizRepository repository = QuizRepository.getInstance(application);
+        repository = QuizRepository.getInstance(application);
 
-        // Built in the constructor, AFTER the repository exists (the old code
-        // did this in the field declaration and did not compile).
         tournaments = Transformations.switchMap(selectedEra, era ->
                 repository.getTournamentsByEra(era.getStartYear(), era.getEndYear()));
     }
 
-    /** Called by the Fragment with the navigation argument. */
     public void setEra(@NonNull Era era) {
-        if (era != selectedEra.getValue()) {   // skip re-querying after rotation
+        if (era != selectedEra.getValue()) {
             selectedEra.setValue(era);
         }
     }
@@ -56,5 +53,10 @@ public class CategoryViewModel extends AndroidViewModel {
 
     public void setSelectedType(@Nullable CategoryType type) {
         selectedType = type;
+    }
+
+    /** Looks up the database id of a topic category (result on the main thread). */
+    public void findCategoryId(CategoryType type, QuizRepository.CategoryIdCallback callback) {
+        repository.getCategoryIdByType(type, callback);
     }
 }

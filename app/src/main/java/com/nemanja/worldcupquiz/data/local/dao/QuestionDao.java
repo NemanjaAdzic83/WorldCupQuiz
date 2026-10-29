@@ -14,23 +14,27 @@ import java.util.List;
 @Dao
 public interface QuestionDao {
 
-    /** Inserts many questions at once (seeder). */
     @Insert
     void insertAll(List<Question> questions);
 
-    /** All questions of one World Cup ("All questions" tab). */
-    @Query("SELECT * FROM questions WHERE tournamentId = :tournamentId")
+    // ORDER BY id: always the same order, so a quiz can be resumed at question N.
+
+    /** All questions of one World Cup ("All" tab). */
+    @Query("SELECT * FROM questions WHERE tournamentId = :tournamentId ORDER BY id")
     LiveData<List<Question>> getQuestionsForTournament(int tournamentId);
 
-    /** Questions of one World Cup filtered by category (Finals / Players / Records tabs). */
-    @Query("SELECT * FROM questions WHERE tournamentId = :tournamentId AND categoryId = :categoryId")
+    /** Questions of one World Cup in one category (Finals / Players / Records tabs). */
+    @Query("SELECT * FROM questions WHERE tournamentId = :tournamentId AND categoryId = :categoryId ORDER BY id")
     LiveData<List<Question>> getQuestionsForTournamentAndCategory(int tournamentId, int categoryId);
 
-    /** Cross-era questions (no tournament) of one category - "Records & Legends" quiz. */
-    @Query("SELECT * FROM questions WHERE tournamentId IS NULL AND categoryId = :categoryId")
+    /** Cross-era questions of one category. */
+    @Query("SELECT * FROM questions WHERE tournamentId IS NULL AND categoryId = :categoryId ORDER BY id")
     LiveData<List<Question>> getCrossEraQuestions(int categoryId);
 
-    /** Total number of questions, live (Home screen stats). */
+    /** ALL cross-era questions - the "Records & Legends" quiz. */
+    @Query("SELECT * FROM questions WHERE tournamentId IS NULL ORDER BY id")
+    LiveData<List<Question>> getAllCrossEraQuestions();
+
     @Query("SELECT COUNT(*) FROM questions")
     LiveData<Integer> getCount();
 }
