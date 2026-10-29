@@ -58,6 +58,11 @@ com.nemo.worldcupquiz
 ## Screenshots
 
 <!-- Add screenshots here, e.g. ![Home](screenshots/home.png) -->
+## Screenshots
+
+| Home | Quiz | Result | Stadiums |
+|:---:|:---:|:---:|:---:|
+| <img src="screenshots/home.png" width="200"> | <img src="screenshots/quiz.png" width="200"> | <img src="screenshots/result.png" width="200"> | <img src="screenshots/stadiums.png" width="200"> |
 
 ## Notes
 
